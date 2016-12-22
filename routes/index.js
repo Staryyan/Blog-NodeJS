@@ -68,4 +68,22 @@ router.get('/deleteDraft', function (request, response) {
     }
 });
 
+router.get('/loadArticles', function (request, response) {
+    Article.getArticlesGroup(function (data) {
+        for (ch in data) {
+            data[ch]['date'] = momentJS(data[ch]['date']).fromNow();
+        }
+        response.json({
+            articlesList: data
+        });
+    });
+});
+
+router.post('/loadArticleDetail', function (request, response) {
+    Article.getArticle(request.body.id, function (data) {
+        data['date'] = momentJS(data['date']).fromNow();
+        response.json(data);
+    })
+});
+
 module.exports = router;

@@ -33,6 +33,14 @@ ArticleSchema.statics.saveArticle = function (article, callback) {
     });
 };
 
+ArticleSchema.statics.getArticle = function (id, callback) {
+    this.findOne({id: id}).then(function (article) {
+        callback(article);
+    }).catch(function (error) {
+        console.log(error);
+    })
+};
+
 ArticleSchema.statics.getArticlesGroup = function (callback) {
     this.find().sort({'date': -1}).then(function (articles) {
         callback(articles);

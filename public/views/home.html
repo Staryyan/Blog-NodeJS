@@ -11,6 +11,11 @@
 
     <title>Blog Home - Stary's blog.</title>
 
+
+    <script type="text/javascript" src="../javascripts/Angular.js"></script>
+
+    <script type="text/javascript" src="../javascripts/home.js"></script>
+
     <!-- Bootstrap Core CSS -->
     <link href="../stylesheets/bootstrap.min.css" rel="stylesheet">
 
@@ -19,7 +24,7 @@
 
 </head>
 
-<body>
+<body ng-app="homeApp">
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -56,27 +61,29 @@
     <!-- Page Content -->
     <div class="container">
 
-        <div class="row">
+        <div class="row" ng-controller="homeArticlesListCtrl">
 
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
                 <h1 class="page-header">
-                    Page Heading
-                    <small>Category</small>
+                    Articles
                 </h1>
+                <div ng-repeat="article in articlesList">
+                    <!-- First Blog Post -->
+                    <h2>
+                        <a href="#">{{ article['title'] }}</a>
+                        <small>{{ article['catalog'] }}</small>
+                    </h2>
+                    <p class="lead">
+                        by <a href="">{{ article['author'] }}</a>
+                    </p>
+                    <p><span class="glyphicon glyphicon-time"></span> {{ article['date'] }} </p>
+                    <a class="btn btn-primary" href="./article.html?id={{ article['id'] }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <hr />
 
-                <!-- First Blog Post -->
-                <h2>
-                    <a href="#">Title</a>
-                </h2>
-                <p class="lead">
-                    by <a href="">Stary</a>
-                </p>
-                <p><span class="glyphicon glyphicon-time"></span> Time </p>
-                <p>Simple Content.</p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-                <hr />
+                </div>
+
 
                 <!-- Pager -->
                 <ul class="pager">

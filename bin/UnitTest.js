@@ -67,3 +67,9 @@ conn.once('open', info => console.log('Connected!'));
 // });
 
 
+var Parser = require('./Parser');
+
+var parser = new Parser();
+
+console.log(parser.parseArticleIdByDate('C++'));
+console.log(parser.parseArticleIdByDate('JAVA'));

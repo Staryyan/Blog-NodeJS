@@ -12,12 +12,7 @@ Parser.prototype.parsePassword = function(password) {
 };
 
 Parser.prototype.parseArticleIdByDate = function (date) {
-    var hash = 1315423911;
-    for (var eachCh in date) {
-        hash ^= ((hash << 5) + eachCh + (hash >> 2));
-    }
-    return (hash & 0x7FFFFFFF);
+    return crypto.createHash('md5').update(date).digest('hex').toLowerCase();
 };
-
 
 module.exports = Parser;
