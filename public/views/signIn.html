@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="article">
+    <meta name="author" content="Stary">
+
+    <title>Blog Article - Article</title>
+
+    <script src="../javascripts/Angular.js"></script>
+
+    <script src="../javascripts/signIn.js"></script>
+
+    <!-- jQuery -->
+    <script src="../javascripts/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../javascripts/bootstrap.min.js"></script>
+
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <link href="../stylesheets/logIn.css" rel="stylesheet">
+
+</head>
+<body ng-app="signInApp">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./home.html">Stary's Blog</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="home.html">Home</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <div class="container" ng-controller="signInCtrl" ng-init="signInWrong=false">
+        <div class="row">
+            <form class="log-in-form jumbotron">
+                <h1>Sign In</h1>
+                <div ng-if="signInWrong" class="alert alert-danger" role="alert">
+                    <strong>Warning</strong>
+                    <p>{{ wrongInfo }}</p>
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-addon">@</span>
+                    <input type="text" class="form-control" placeholder="Username" ng-model="username" required>
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-addon">@</span>
+                    <input type="password" class="form-control" placeholder="Password" ng-model="password" required>
+                </div>
+
+                <button class="btn btn-group btn-success" ng-click="logIn()">Sign In</button>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

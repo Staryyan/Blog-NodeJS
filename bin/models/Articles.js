@@ -27,9 +27,9 @@ ArticleSchema.statics.saveArticle = function (article, callback) {
         catalog: article.catalog,
         date: article.date,
         content: article.content
-    })).then(callback('Succeed')).catch(function (error) {
+    })).then(callback({'succeed': true})).catch(function (error) {
         console.log(error);
-        callback('Error!');
+        callback({'succeed': false, 'error': 'Error!'});
     });
 };
 

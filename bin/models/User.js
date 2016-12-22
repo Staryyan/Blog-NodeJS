@@ -15,15 +15,17 @@ var parser = new Parser();
 
 UserSchema.statics.logInValidate = function (username, password, callback) {
     this.findOne({username: username}).then(function (user) {
+        var callbackJson = {'succeed': false, 'error': ''};
         if (user) {
             if (user.password != parser.parsePassword(password)) {
-                callback('Wrong Password.');
+                callbackJson['error'] = 'Wrong Password.';
             } else {
-                callback('Succeed!');
+                callbackJson['succeed'] = true;
             }
         } else {
-            callback('Wrong Id');
+            callbackJson['error'] = 'Wrong Id';
         }
+        callback(callbackJson);
     }).catch(function (error) {
         console.log(error);
         callback('Error!');

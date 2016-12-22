@@ -12,6 +12,10 @@ footer {
     margin-right: auto;
 }
 
+.writeArticleForm h2 {
+    text-align: center;
+}
+
 .input-group {
     margin: 20px;
 }
@@ -24,3 +28,5 @@ footer {
 footer p {
     text-align: center;
 }
+
+
