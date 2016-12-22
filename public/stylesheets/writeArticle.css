@@ -1,0 +1,23 @@
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+footer {
+    margin: 50px 0;
+}
+
+.writeArticleForm {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-group {
+    margin: 20px;
+}
+
+.content {
+    margin: 0;
+    padding: 0;
+}
+
