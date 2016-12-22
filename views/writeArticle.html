@@ -16,9 +16,10 @@
     <!-- Bootstrap Core CSS -->
     <link href="../public/stylesheets/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="../public/stylesheets/markdown.css">
-
     <link href="../public/stylesheets/writeArticle.css" rel="stylesheet">
+
+    <link href="../public/bootstrap-wysihtml5/style-responsive.css" rel="stylesheet">
+    <link href="../public/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet">
 
 </head>
 <body>
@@ -52,8 +53,8 @@
     </nav>
 
     <div class="container">
-        <form class="writeArticleForm jumbotron">
-            <h2>Share Your Opinion</h2>
+        <form class="writeArticleForm jumbotron form-horizontal">
+            <h2>Share Your Opinion...</h2>
             <div class="input-group">
                 <span class="input-group-addon">Title</span>
                 <input type="text" class="form-control" placeholder="Title">
@@ -63,29 +64,34 @@
                 <span class="input-group-addon">Catalog</span>
                 <input type="text" class="form-control" placeholder="Catalog">
             </div>
-            <!--<div class="content">-->
-                <!--<div class="textEditing">-->
-                    <!--<input type="checkbox" id="bold"><label for="bold"><span class="fontawesome-bold"></span></label></input>-->
-                    <!--<input type="checkbox" id="italic"><label for="italic"><span class="fontawesome-italic"></span></label></input>-->
-                    <!--<input type="checkbox" id="underline"><label for="underline"><span class="fontawesome-underline"></span></label></input>-->
-                    <!--<input type="radio" name="textStyle" id="left" checked><label for="left"><span class="fontawesome-align-left"></span></label></input>-->
-                    <!--<input type="radio" name="textStyle" id="center"><label for="center"><span class="fontawesome-align-center"></span></label></input>-->
-                    <!--<input type="radio" name="textStyle" id="right"><label for="right"><span class="fontawesome-align-right"></span></label></input>-->
-                    <!--<input type="radio" name="textStyle" id="justify"><label for="justify"><span class="fontawesome-align-justify"></span></label></input>-->
-                    <!--<input type="file" id="image"><label for="image"><span class="fontawesome-picture"></span></label></input>-->
-                    <!--<input type="checkbox" id="attachment"><label for="attachment"><span class="fontawesome-link"></span></label></input>-->
-                    <!--<input type="" id="link"><label for="link" id="linkLable"><span id=""></span></label></input>-->
-                    <!--<input type="checkbox" id="code"><label for="code"><span class="fontawesome-quote-right"></span></label></input>-->
-                <!--</div>-->
-                <!--<p id="contentText" contenteditable="true">Enter text here</p>-->
-            <!--</div>-->
+
+            <div class="compose-editor">
+                <textarea id="content" class="wysihtml5 form-control" rows="12"></textarea>
+            </div>
+
+            <hr />
+            <button class="btn btn-info">Save</button>
+
+            <button class="btn btn-success">Submit</button>
+
+            <button class="btn btn-danger">Delete</button>
 
 
         </form>
+
+        <!-- Footer -->
+        <footer>
+            <hr />
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Stary 2016</p>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </footer>
+
     </div>
-
-
-
 
 
 
@@ -95,5 +101,11 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="../public/javascripts/bootstrap.min.js"></script>
 
+    <script src="../public/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+
+    <script src="../public/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+    <script>
+        $('.wysihtml5').wysihtml5();
+    </script>
 </body>
 </html>
