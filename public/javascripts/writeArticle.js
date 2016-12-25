@@ -10,7 +10,6 @@ app.controller('writeArticleCtrl', function ($scope, $http) {
             url: '../loadDraft',
             method: 'GET'
         }).success(function (data) {
-            console.log(data);
             $scope.title = data['title'];
             $scope.catalog = data['catalog'];
             $scope.contents = data['content'];
@@ -20,10 +19,13 @@ app.controller('writeArticleCtrl', function ($scope, $http) {
     }
 
     function getForm() {
+        var html = $('#content').val().replace(/&lt;/g, '<');
+        html = html.replace(/&gt;/g, '>');
+        console.log(html);
         return {
             title: $scope.title,
             catalog: $scope.catalog,
-            content: $('#content').val()
+            content: html
         }
     }
 
