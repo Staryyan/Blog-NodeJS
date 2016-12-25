@@ -1,1 +1,1 @@
-{"message":"Welcome to Heartbeat."}
+{"message":"Welcome to heartbeat."}

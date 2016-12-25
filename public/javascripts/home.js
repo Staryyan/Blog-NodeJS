@@ -6,15 +6,6 @@ var app = angular.module('homeApp', []);
 
 app.controller('homeArticlesListCtrl', function ($scope, $http) {
     loadArticles();
-
-    loadInformation();
-
-    $scope.submitSearch = function () {
-        var title = $("#search").val();
-        if (title != '' && searchByTitle(title)) {
-            window.location.href = './article.html?id=' + searchByTitle(title);
-        }
-    };
     
     $scope.deleteArticle = function (id) {
         $scope.deleteId = id;
@@ -35,28 +26,6 @@ app.controller('homeArticlesListCtrl', function ($scope, $http) {
         })
     };
 
-    $scope.saveInformation = function () {
-        $http({
-            url: '../savePublishInformation',
-            method: 'POST',
-            data: {
-                message: $scope.message
-            }
-        }).success(function (data) {
-            console.log(data);
-            window.location.href = './home.html';
-        }).error(function (error) {
-            console.log(error);
-        })
-    };
-    
-    function searchByTitle(title) {
-        for (var each of $scope.articlesGlobalList) {
-            if (each['title'] == title) {
-                return each['id'];
-            }
-        }
-    }
 
     function loadArticles() {
         $http({
@@ -64,20 +33,7 @@ app.controller('homeArticlesListCtrl', function ($scope, $http) {
             method: 'GET'
         }).success(function (data) {
             $scope.articlesGlobalList = data['articlesList'];
-            autocompleteSearch(data['articlesList']);
             showPerPage();
-        }).error(function (error) {
-            console.log(error);
-        })
-    }
-
-    function loadInformation() {
-        $http({
-            url: '../readPublishInformation',
-            method: 'POST'
-        }).success(function (data) {
-            console.log(data);
-            $scope.publishMessage = data['message'];
         }).error(function (error) {
             console.log(error);
         })
@@ -125,14 +81,7 @@ app.controller('homeArticlesListCtrl', function ($scope, $http) {
         $scope.page[des - 1]['class'] = 'active';
     }
     
-    function autocompleteSearch(articlesList) {
-        var availableTags = [];
-        for (var each of articlesList) {
-            availableTags.push(each['title']);
-        }
-        $( "#search" ).autocomplete({
-            source: availableTags
-        });
-    }
+
 
 });
+
