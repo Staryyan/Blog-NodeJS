@@ -34,6 +34,7 @@ app.controller('writeArticleCtrl', function ($scope, $http) {
             data: getForm()
         }).success(function (data) {
             console.log(data);
+            $scope.delete();
             window.location.href = './home.html';
         }).error(function (error) {
             console.log(error);
