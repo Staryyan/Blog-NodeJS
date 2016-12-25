@@ -1,6 +1,7 @@
 var express = require('express');
 var User = require('../bin/models/User');
 var Article = require('../bin/models/Articles');
+var Comments = require('../bin/models/Comments');
 var momentJS = require('moment');
 var router = express.Router();
 
@@ -82,6 +83,29 @@ router.get('/loadArticles', function (request, response) {
 router.post('/loadArticleDetail', function (request, response) {
     Article.getArticle(request.body.id, function (data) {
         data['date'] = momentJS(data['date']).fromNow();
+        response.json(data);
+    })
+});
+
+
+router.post('/loadArticleComments', function (request, response) {
+    console.log('loadArticleComments');
+    Article.getCommentsById(request.body.id, function (data) {
+        for (each of data) {
+            each['date'] = momentJS(each['date']).fromNow();
+        }
+        response.json({commentsList: data});
+    })
+});
+
+router.post('/comment', function (request, response) {
+    console.log('comment');
+    Article.commentForArticleById(new Comments({
+        id: request.body.id,
+        content: request.body.content,
+        author: request.body.author,
+        date: momentJS().format()
+    }), function (data) {
         response.json(data);
     })
 });
