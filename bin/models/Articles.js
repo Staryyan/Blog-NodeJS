@@ -41,6 +41,14 @@ ArticleSchema.statics.getArticle = function (id, callback) {
     })
 };
 
+ArticleSchema.statics.deleteArticle = function (id, callback) {
+    this.remove({id: id}).then(function (data) {
+        callback(data);
+    }).catch(function (error) {
+        console.log(error);
+    })
+};
+
 ArticleSchema.statics.getArticlesGroup = function (callback) {
     this.find().sort({'date': -1}).then(function (articles) {
         callback(articles);

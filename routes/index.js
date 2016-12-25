@@ -3,11 +3,12 @@ var User = require('../bin/models/User');
 var Article = require('../bin/models/Articles');
 var Comments = require('../bin/models/Comments');
 var momentJS = require('moment');
+var fs = require('fs');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(request, response, next) {
-  
+router.get('/views/home.html', function(request, response, next) {
+
 });
 
 router.post('/logIn', function (request, response) {
@@ -108,6 +109,38 @@ router.post('/comment', function (request, response) {
     }), function (data) {
         response.json(data);
     })
+});
+
+router.post('/deleteArticle', function (request, response) {
+    console.log('deleteArticle');
+    Article.deleteArticle(request.body.id, function (data) {
+        // console.log(data);
+        response.json({})
+    })
+});
+
+router.post('/savePublishInformation', function (request, response) {
+    var data = {'message': request.body.message};
+    fs.writeFile('../log/log.txt', JSON.stringify(data), function (error) {
+        if (error) {
+            console.log(error);
+            response.json({'succeed': false});
+        } else {
+            response.json({'succeed': true});
+        }
+    });
+});
+
+router.post('/readPublishInformation', function (request, response) {
+    console.log('readPublishInformation');
+    fs.readFile('../log/log.txt', function (error, data) {
+        if (error) {
+            console.log(error);
+        } else {
+            data = JSON.parse(data);
+            response.json(data);
+        }
+    });
 });
 
 module.exports = router;

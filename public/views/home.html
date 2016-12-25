@@ -79,8 +79,26 @@
                     </p>
                     <p><span class="glyphicon glyphicon-time"></span> {{ article['date'] }}</p>
                     <a class="btn btn-primary" href="./article.html?id={{ article['id'] }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <a class="btn btn-danger" ng-click="deleteArticle(article['id'])">Delete <span class="glyphicon glyphicon-alert"></span></a>
                     <hr />
-
+                    <!-- Modal -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Are You Sure?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    If you delete the article, you will have no way to find it back!
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-danger" type="button" ng-click="commitDelete()">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <nav>
@@ -134,9 +152,33 @@
                 <!-- Side Widget Well -->
                 <div class="well">
                     <h4>Latest Information</h4>
-                    <p>Welcome to Stary's blog. </p>
+                    <p ng-bind="publishMessage">Welcome to Stary's blog. </p>
+                    <button class="btn btn-info" data-toggle="modal" data-target="#editModal"><span class="glyphicon glyphicon-adjust"></span> Edit</button>
                 </div>
 
+                <!-- Modal -->
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title">Publish latest infomation.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="jumbotron">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Message </span>
+                                        <input type="text" class="form-control" placeholder="Message" ng-model="message" required>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button class="btn btn-success" type="submit" ng-click="saveInformation()">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
