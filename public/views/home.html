@@ -42,10 +42,11 @@
                 <h1 class="page-header">
                     Articles
                 </h1>
+
                 <div ng-repeat="article in articlesList">
                     <!-- First Blog Post -->
                     <h2>
-                        <a href="#">{{ article['title'] }}</a>
+                        <a href="./article.html?id={{ article['id'] }}">{{ article['title'] }}</a>
                         <small>{{ article['catalog'] }}</small>
                     </h2>
                     <p class="lead">

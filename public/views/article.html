@@ -35,6 +35,7 @@
     <!-- Page Content -->
     <div class="container" ng-controller="articleContentCtrl">
         <a class="btn btn-info" href="./home.html"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+        <a class="btn btn-warning">Edit</a>
         <div class="row">
 
             <!-- Blog Post Content Column -->
@@ -90,6 +91,9 @@
                         <div class="media-body">
                             <h4 class="media-heading">{{ comment['author'] }}
                                 <small>{{ comment['date'] }}</small>
+                                <small><a>Edit</a></small>
+                                <small><a>Delete</a></small>
+                                <small><a>Hide</a></small>
                             </h4>
                                 {{ comment['content'] }}
                         </div>

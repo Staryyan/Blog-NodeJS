@@ -6,14 +6,20 @@ var momentJS = require('moment');
 var fs = require('fs');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/views/home.html', function(request, response, next) {
-
+router.post('/logIn', function (request, response) {
+    console.log('login');
+    User.logInValidate(request.body.username, request.body.password, function (data) {
+        console.log(data);
+        if (data['succeed']) {
+            response.cookie('user', {name: request.body.name}, {httpOnly: true});
+        }
+        response.json(data);
+    })
 });
 
-router.post('/logIn', function (request, response) {
-    console.log(request.body.username, request.body.password);
-    User.logInValidate(request.body.username, request.body.password, function (data) {
+router.post('/register', function (request, response) {
+    console.log('register');
+    User.register(request.body.username, request.body.password, function (data) {
         console.log(data);
         response.json(data);
     })

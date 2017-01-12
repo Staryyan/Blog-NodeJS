@@ -34,16 +34,23 @@ UserSchema.statics.logInValidate = function (username, password, callback) {
 
 UserSchema.statics.register = function (username, password, callback) {
     this.findOne({username: username}).then(function (user) {
+        var callbackJson = {'succeed': false, 'error': ''};
         if (user) {
-            callback('Username has been registered!');
+            callbackJson['error'] = 'Username has been registered!';
+            callback(callbackJson);
         } else {
             var savedUser = new User({
                 username: username,
                 password: parser.parsePassword(password)
             });
-            savedUser.save().then(callback('succeed')).catch(function (error) {
+            savedUser.save().then(function () {
+                console.log('tset');
+                callbackJson['succeed'] = true;
+                callback(callbackJson);
+            }).catch(function (error) {
                 console.log(error);
-                callback('Error!');
+                callbackJson['error'] = 'Error';
+                callback(callbackJson);
             });
         }
     }).catch(function (error) {

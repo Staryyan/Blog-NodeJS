@@ -4,14 +4,14 @@
  */
 var app = angular.module('signInApp', []);
 
-app.controller('signInCtrl', function ($scope, $http) {
+app.controller('signInCtrl', function ($scope, $http, $location) {
     $scope.logIn = function () {
         $http({
             url: '../logIn',
             method: 'POST',
             data: {
                 username: $scope.username,
-                password: $scope.password
+                password: parsePassword()
             }}).success(function(data) {
             if (data['succeed']) {
                 window.location.href = './home.html';
@@ -21,4 +21,12 @@ app.controller('signInCtrl', function ($scope, $http) {
             }
         }).error(function(error) { console.log(error)});
     };
+
+    $scope.register = function () {
+        window.location.href = './register.html';
+    }
 });
+
+function parsePassword() {
+    return hex_md5($('#password').val());
+}

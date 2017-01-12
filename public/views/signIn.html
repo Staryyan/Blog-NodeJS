@@ -14,6 +14,8 @@
 
     <script src="../javascripts/Angular.js"></script>
 
+    <script src="../javascripts/md5.js"></script>
+
     <script src="../javascripts/signIn.js"></script>
 
     <!-- jQuery -->
@@ -58,7 +60,7 @@
 
     <div class="container" ng-controller="signInCtrl" ng-init="signInWrong=false">
         <div class="row">
-            <form class="log-in-form jumbotron">
+            <div class="log-in-form jumbotron">
                 <h1>Sign In</h1>
                 <div ng-if="signInWrong" class="alert alert-danger" role="alert">
                     <strong>Warning</strong>
@@ -72,12 +74,14 @@
 
                 <div class="input-group">
                     <span class="input-group-addon">@</span>
-                    <input type="password" class="form-control" placeholder="Password" ng-model="password" required>
+                    <input id="password" type="password" class="form-control" placeholder="Password" ng-model="password" required>
                 </div>
 
                 <button class="btn btn-group btn-success" ng-click="logIn()">Sign In</button>
 
-            </form>
+                <button class="btn btn-group btn-info" ng-click="register()">Register</button>
+
+            </div>
         </div>
     </div>
 
