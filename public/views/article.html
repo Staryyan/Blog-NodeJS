@@ -15,7 +15,11 @@
     <script type="text/javascript" src="../javascripts/Angular.js"></script>
     <script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular-sanitize.min.js"></script>
 
+    <script type="text/javascript" src="../javascripts/Cookies.js"></script>
+
     <script type="text/javascript" src="../javascripts/article.js"></script>
+
+    <script type="text/javascript" src="../javascripts/navigator.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="../stylesheets/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +39,7 @@
     <!-- Page Content -->
     <div class="container" ng-controller="articleContentCtrl">
         <a class="btn btn-info" href="./home.html"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
-        <a class="btn btn-warning">Edit</a>
+        <a class="btn btn-warning" ng-if="articleCanEdit(author)" ng-click="editArticle()">Edit</a>
         <div class="row">
 
             <!-- Blog Post Content Column -->
@@ -71,12 +75,10 @@
                     <h4>Leave a Comment:</h4>
                     <form role="form">
                         <div class="form-group">
-                            <input class="form-control" placeholder="Your Name" ng-model="CommentAuthor">
-                        </div>
-                        <div class="form-group">
                             <textarea class="form-control" rows="3" ng-model="CommentContent"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" ng-click="submitComment()">Submit</button>
+                        <label class="label-danger">{{ tips }}</label>
                     </form>
                 </div>
 
@@ -91,14 +93,63 @@
                         <div class="media-body">
                             <h4 class="media-heading">{{ comment['author'] }}
                                 <small>{{ comment['date'] }}</small>
-                                <small><a>Edit</a></small>
-                                <small><a>Delete</a></small>
-                                <small><a>Hide</a></small>
+                                <small><a ng-if="commentCanEdit(comment['author']) && !comment['hide']" ng-click="editComment(comment['commentId'])">Edit</a></small>
+                                <small><a ng-if="commentCanDelete(comment['author']) && !comment['hide']" ng-click="deleteComment(comment['commentId'])">Delete</a></small>
+                                <small><a ng-if="commentCanHide(comment['author']) && !comment['hide']" ng-click="hideComment(comment['commentId'])">Hide</a></small>
                             </h4>
+                            <h4 class="media-bottom" ng-if="!comment['hide']">
                                 {{ comment['content'] }}
+                            </h4>
+                            <h4 class="media-bottom" ng-if="comment['hide']">
+                                This comment has been hided.
+                            </h4>
                         </div>
                     </div>
                     <hr />
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Are You Sure?</h4>
+                            </div>
+                            <div class="modal-body">
+                                If you delete the comment, you will have no way to find it back!
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button class="btn btn-danger" type="button" ng-click="commitDelete()">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title">Edit your comment!</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="jumbotron">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Comment </span>
+                                        <input type="text" class="form-control" placeholder="Comment" ng-model="message" required>
+                                        <label class="label-danger" ng-if="editFail">{{ editMsg }}</label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button class="btn btn-success" type="submit" ng-click="saveEditedComment()">Save</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>

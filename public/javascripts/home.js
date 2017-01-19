@@ -28,6 +28,8 @@ app.controller('homeArticlesListCtrl', function ($scope, $http) {
 
 
     function loadArticles() {
+        hasSignedIn();
+
         $http({
             url: '../loadArticles',
             method: 'GET'
@@ -80,8 +82,24 @@ app.controller('homeArticlesListCtrl', function ($scope, $http) {
         $scope.page[org - 1]['class'] = '';
         $scope.page[des - 1]['class'] = 'active';
     }
-    
 
+    function hasSignedIn() {
+        var cookie = new Cookies();
+        var user = cookie.readCookiesByName();
+        console.log(user);
+        if (user) {
+            $scope.userInfo = user;
+        } else {
+            $scope.userInfo = 'guest';
+        }
+    }
 
+    $scope.canDeleteArticle = function(author) {
+        if ($scope.userInfo == 'guest') {
+            return false;
+        } else {
+            return ($scope.userInfo == 'Administration') || ($scope.userInfo == author);
+        }
+    }
 });
 

@@ -13,8 +13,11 @@
 
     <script type="text/javascript" src="../javascripts/Angular.js"></script>
 
+    <script type="text/javascript" src="../javascripts/Cookies.js"></script>
+
     <script type="text/javascript" src="../javascripts/home.js"></script>
 
+    <script type="text/javascript" src="../javascripts/navigator.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="../stylesheets/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +43,7 @@
             <div class="col-md-8" ng-controller="homeArticlesListCtrl">
 
                 <h1 class="page-header">
-                    Articles
+                    Welcome, {{ userInfo }}!
                 </h1>
 
                 <div ng-repeat="article in articlesList">
@@ -54,7 +57,7 @@
                     </p>
                     <p><span class="glyphicon glyphicon-time"></span> {{ article['date'] }}</p>
                     <a class="btn btn-primary" href="./article.html?id={{ article['id'] }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-                    <a class="btn btn-danger" ng-click="deleteArticle(article['id'])">Delete <span class="glyphicon glyphicon-alert"></span></a>
+                    <a class="btn btn-danger" ng-click="deleteArticle(article['id'])" ng-if="canDeleteArticle(article['author'])">Delete <span class="glyphicon glyphicon-alert"></span></a>
                     <hr />
                     <!-- Modal -->
                     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

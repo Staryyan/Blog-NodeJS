@@ -4,7 +4,14 @@ var Article = require('../bin/models/Articles');
 var Comments = require('../bin/models/Comments');
 var momentJS = require('moment');
 var fs = require('fs');
+var Parser = require('../bin/Parser');
 var router = express.Router();
+
+/* GET home page. */
+router.get('/', function(request, response) {
+    console.log('test');
+    response.render('widgetTemplate')
+});
 
 router.post('/logIn', function (request, response) {
     console.log('login');
@@ -46,7 +53,6 @@ router.post('/saveDraft', function (request, response) {
         { httpOnly: true, maxAge: 7 * 3600 * 3600 });
     response.json({succeed: true});
 });
-
 
 router.get('/loadDraft', function (request, response) {
     var draft = request.cookies.draft;
@@ -97,7 +103,7 @@ router.post('/loadArticleDetail', function (request, response) {
 
 router.post('/loadArticleComments', function (request, response) {
     console.log('loadArticleComments');
-    Article.getCommentsById(request.body.id, function (data) {
+    Article.getCommentsById(request.body.articleId, function (data) {
         for (each of data) {
             each['date'] = momentJS(each['date']).fromNow();
         }
@@ -108,7 +114,8 @@ router.post('/loadArticleComments', function (request, response) {
 router.post('/comment', function (request, response) {
     console.log('comment');
     Article.commentForArticleById(new Comments({
-        id: request.body.id,
+        articleId: request.body.articleId,
+        commentId: request.body.commentId,
         content: request.body.content,
         author: request.body.author,
         date: momentJS().format()
@@ -146,6 +153,27 @@ router.post('/readPublishInformation', function (request, response) {
             data = JSON.parse(data);
             response.json(data);
         }
+    });
+});
+
+router.post('/deleteComment', function (request, response) {
+    console.log('deleteComment');
+    Comments.deleteCommentByCommentId(request.body.commentId, function () {
+        response.json({succeed: 'true'});
+    });
+});
+
+router.post('/editComment', function (request, response) {
+    console.log('editComment');
+    Comments.editCommentByCommentId(request.body.commentId, request.body.newMsg, function (data) {
+        response.json({succeed: 'true'});
+    });
+});
+
+router.post('/hideComment', function (request, response) {
+   console.log('hideComment');
+    Comments.hideCommentByCommentId(request.body.commentId, function (data) {
+        response.json({succeed: 'true'});
     });
 });
 

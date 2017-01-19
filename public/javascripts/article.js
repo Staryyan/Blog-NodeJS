@@ -5,6 +5,10 @@
 
 var app = angular.module('articleApp', ['ngSanitize']);
 
+var cookie = new Cookies();
+
+var user = cookie.readCookiesByName();
+
 app.controller('articleContentCtrl', function ($scope, $http, $location, $sce) {
 
     loadArticle();
@@ -12,13 +16,11 @@ app.controller('articleContentCtrl', function ($scope, $http, $location, $sce) {
     loadComments();
 
     function loadArticle() {
-        var id = getId();
-
         $http({
             url: '../loadArticleDetail',
             method: 'POST',
             data: {
-                id: id
+                id: getArticleId()
             }
         }).success(function (data) {
             $scope.title = data['title'];
@@ -31,13 +33,11 @@ app.controller('articleContentCtrl', function ($scope, $http, $location, $sce) {
     }
 
     function loadComments() {
-        var id = getId();
-
         $http({
             url: '../loadArticleComments',
             method: 'POST',
             data: {
-                id: id
+                articleId: getArticleId()
             }
         }).success(function (data) {
             console.log(data);
@@ -47,28 +47,43 @@ app.controller('articleContentCtrl', function ($scope, $http, $location, $sce) {
         })
     }
 
-    function getId() {
+    function getArticleId() {
         var url = $location.absUrl();
         return url.substr(url.indexOf('id=') + 3);
     }
 
+    function getCommentId() {
+        return new Date().getTime();
+    }
+
+    $scope.hasLogIn = function () {
+        return user != null;
+    };
+
     $scope.submitComment = function () {
-        if ($scope.CommentContent) {
-            if (!$scope.CommentAuthor) {
-                $scope.CommentAuthor = 'anonymity';
+        if (!$scope.hasLogIn()) {
+            $scope.tips = 'Please Log in first.';
+        } else {
+            if ($scope.CommentContent) {
+                postToDB();
+                $scope.tips = ''
+            } else {
+                $scope.tips = 'Please comment somethings.'
             }
-            postToDB();
         }
     };
 
     function postToDB() {
+        console.log(user);
         $http({
             url: '../comment',
             method: 'POST',
             data: {
-                id: getId(),
+                articleId: getArticleId(),
+                commentId: getCommentId(),
                 content: $scope.CommentContent,
-                author: $scope.CommentAuthor
+                author: user,
+                hide: false
             }
         }).success(function (data) {
             showInHtml();
@@ -79,12 +94,78 @@ app.controller('articleContentCtrl', function ($scope, $http, $location, $sce) {
 
     function showInHtml() {
         $scope.commentsList.unshift({
-            author: $scope.CommentAuthor,
+            author: user,
             content: $scope.CommentContent,
             date: 'Just Now'
         });
-        $scope.CommentAuthor = '';
         $scope.CommentContent = '';
     }
+
+    $scope.commentCanEdit = function (author) {
+        return (author == user) || (user == 'Administration');
+    };
+
+    $scope.commentCanDelete = function (author) {
+        return (author == user) || (user == 'Administration');
+    };
+
+    $scope.commentCanHide = function () {
+        return user == 'Administration';
+    };
+
+    $scope.articleCanEdit = function (author) {
+        return user == author;
+    };
+
+    $scope.deleteComment = function (id) {
+        $scope.deleteCommentId = id;
+        $('#deleteModal').modal();
+    };
+
+    $scope.commitDelete = function () {
+        console.log('delete');
+        console.log($scope.deleteCommentId);
+        $http({
+            url: '/deleteComment',
+            data: { commentId: $scope.deleteCommentId },
+            method: 'POST'
+        }).success(function (data) {
+            window.location.href = './home.html'
+        })
+    };
+    
+    $scope.editComment = function (id) {
+        $scope.editCommentId = id;
+        $('#editModal').modal();
+    };
+
+    $scope.saveEditedComment = function () {
+        if ($scope.message == '') {
+            $scope.editFail = true;
+            $scope.editMsg = 'Please fill in your new comment';
+        } else {
+            $http({
+                url: '/editComment',
+                method: 'POST',
+                data: {
+                    commentId: $scope.editCommentId,
+                    newMsg: $scope.message
+                }
+            }).success(function (data) {
+                window.location.href = './home.html'
+            })
+        }
+    };
+    
+    $scope.hideComment = function (id) {
+        $http({
+            url: '/hideComment',
+            method: 'POST',
+            data: { commentId: id }
+        }).success(function (data) {
+            window.location.href = './home.html'
+        })
+    }
+    
 });
 

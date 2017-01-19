@@ -63,7 +63,7 @@ ArticleSchema.statics.commentForArticleById = function (comments, callback) {
 };
 
 ArticleSchema.statics.getCommentsById = function (id, callback) {
-    Comments.getCommentsById(id, callback);
+    Comments.getCommentsByArticleId(id, callback);
 };
 
 var Article = mongoose.model('Articles', ArticleSchema);

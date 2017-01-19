@@ -14,6 +14,8 @@ app.controller('signInCtrl', function ($scope, $http, $location) {
                 password: parsePassword()
             }}).success(function(data) {
             if (data['succeed']) {
+                var cookie = new Cookies();
+                cookie.setCookiesAsSession('name', $scope.username);
                 window.location.href = './home.html';
             } else {
                 $scope.signInWrong = true;
