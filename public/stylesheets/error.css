@@ -1,3 +1,8 @@
+body {
+    font: 10px Arial, sans-serif;
+    background-image: url("../images/lockscreen-bg.jpg");
+}
+
 .error {
     width: 380px;
     height: 155px;
@@ -7,13 +12,58 @@
     background-image: url("../images/404-error.png");
 }
 
-#btn {
-    margin-top: 40px;
-}
 
 h1 {
     color: #B22222;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+
+.btn {
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    vertical-align: middle;
+    border: 1px solid;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.01);
+    line-height: 25px;
+    display: block;
+    width: 110px;
+    height: 40px;
+    background-color: white;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+}
+
+.btn-green {
+    color: #3CB371;
+    border-color: #3CB371;
+}
+
+.btn-medium {
+    font-size: larger;
+    padding: 0.5375em 1.375em;
+}
+
+.btn-radius {
+    border-radius: 3px;
+}
+
+.btn-green {
+    color: #3CB371;
+    border-color: #3CB371;
+}
+
+.btn-green:hover {
+    background: #3CB371;
+    color: #fff;
+    border-color: #3CB371;
 }
