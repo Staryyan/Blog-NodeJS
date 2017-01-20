@@ -6,6 +6,8 @@
 $('#username').tooltip();
 $('#password').tooltip();
 
+var app = angular.module('registerApp', []);
+
 $(document).ready(function () {
     hideError();
 

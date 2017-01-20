@@ -22,7 +22,7 @@
 
     </head>
 
-    <body>
+    <body ng-app="registerApp">
 
         <div ng-include="'./navigatorTemplate.html'"></div>
 
@@ -47,7 +47,7 @@
 
                     <div class="input-group">
                         <span class="input-group-addon">@</span>
-                        <input id="repeatPassword" type="password" class="form-control" placeholder="repeat your password" required>
+                        <input id="repeatPassword" name="repeatPassword" type="password" class="form-control" placeholder="repeat your password" required>
                     </div>
 
                     <button class="btn btn-group btn-success" id="submitRegisterBtn">Submit</button>
@@ -58,19 +58,25 @@
             </div>
         </div>
 
+        <!-- JS -->
+        <script type="text/javascript" src="../Angular/angular.js"></script>
+
+        <!-- jQuery -->
+        <script type="text/javascript" src="../javascripts/jquery.js"></script>
+
+        <script type="text/javascript" src="../JqueryUI/jquery-ui.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../Bootstrap/bootstrap.min.js"></script>
+
+        <!-- Custom Javascript -->
+        <script src="../javascripts/cookies.js"></script>
+
+        <script src="../javascripts/md5.js"></script>
+
+        <script src="../javascripts/register.js"></script>
+
+        <script src="../javascripts/navigator.js"></script>
+
     </body>
-
-    <!-- JS -->
-    <!-- jQuery -->
-    <script type="text/javascript" src="../javascripts/jquery.js"></script>
-
-    <script type="text/javascript" src="../JqueryUI/jquery-ui.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../Bootstrap/bootstrap.min.js"></script>
-
-    <!-- Custom Javascript -->
-    <script src="../javascripts/md5.js"></script>
-
-    <script src="../javascripts/register.js"></script>
 </html>

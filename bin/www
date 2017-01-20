@@ -93,6 +93,7 @@ function onError(error) {
  */
 
 function onListening() {
+  console.log('please visit localhost:3000/views/home.html');
   var addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
