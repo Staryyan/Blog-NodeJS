@@ -115,10 +115,6 @@ app.controller('articleContentCtrl', function ($scope, $http, $location, $sce) {
         return user == 'Administration';
     };
 
-    $scope.articleCanEdit = function (author) {
-        return user == author;
-    };
-
     $scope.deleteComment = function (id) {
         $scope.deleteCommentId = id;
         $('#deleteModal').modal();
@@ -167,7 +163,7 @@ app.controller('articleContentCtrl', function ($scope, $http, $location, $sce) {
         }).success(function (data) {
             window.location.href = nowUrl;
         })
-    }
+    };
     
 });
 

@@ -25,7 +25,8 @@ app.controller('writeArticleCtrl', function ($scope, $http) {
         return {
             title: $scope.title,
             catalog: $scope.catalog,
-            content: html
+            content: html,
+            author: new Cookies().readCookiesByName()
         }
     }
 

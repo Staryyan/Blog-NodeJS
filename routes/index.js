@@ -10,10 +10,6 @@ var router = express.Router();
 router.post('/logIn', function (request, response) {
     console.log('login');
     User.logInValidate(request.body.username, request.body.password, function (data) {
-        console.log(data);
-        if (data['succeed']) {
-            response.cookie('user', {name: request.body.name}, {httpOnly: true});
-        }
         response.json(data);
     })
 });
@@ -32,7 +28,7 @@ router.post('/writeArticle', function (request, response) {
         title: request.body.title,
         content: request.body.content,
         catalog: request.body.catalog,
-        author: 'Stary',
+        author: request.body.author,
         date: momentJS().format()
     }), function (data) {
         console.log(data);

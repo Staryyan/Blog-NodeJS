@@ -19,9 +19,17 @@ pro.setCookiesWithDates = function (key, value, date) {
 
 pro.readCookiesByName = function () {
     var arr;
-    if(arr=document.cookie.match(/name=(.*);/))
+    if(arr=document.cookie.match(/name=([a-zA-Z0-9_]*);/)) {
         return arr[1];
-    else
+    } else
+        return null;
+};
+
+pro.readCookiesByEditArticleDraft = function () {
+    var arr;
+    if(arr=document.cookie.match(/editArticleDraft=(.*);/)) {
+        return arr[1];
+    } else
         return null;
 };
 

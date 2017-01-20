@@ -68,7 +68,7 @@ app.controller('widgetTemplateCtrl', function ($scope, $http) {
         for (var each of articlesList) {
             availableTags.push(each['title']);
         }
-        $( "#search" ).autocomplete({
+        $("#search").autocomplete({
             source: availableTags
         });
     }
