@@ -8,7 +8,10 @@ app.controller('writeArticleCtrl', function ($scope, $http) {
     function loadDraft() {
         $http({
             url: '../loadDraft',
-            method: 'GET'
+            data: {
+                name: new Cookies().readCookiesByName()
+            },
+            method: 'POST'
         }).success(function (data) {
             $scope.title = data['title'];
             $scope.catalog = data['catalog'];

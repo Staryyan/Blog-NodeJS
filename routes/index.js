@@ -38,14 +38,14 @@ router.post('/writeArticle', function (request, response) {
 
 router.post('/saveDraft', function (request, response) {
     console.log(request.body.content);
-    response.cookie('draft', 
+    response.cookie(request.body.author + 'draft',
         {title: request.body.title, content: request.body.content, catalog: request.body.catalog}, 
         { httpOnly: true, maxAge: 7 * 3600 * 3600 });
     response.json({succeed: true});
 });
 
-router.get('/loadDraft', function (request, response) {
-    var draft = request.cookies.draft;
+router.post('/loadDraft', function (request, response) {
+    var draft = request.cookies[request.body.name + 'draft'];
     if (draft) {
         response.json({
             title: draft.title,

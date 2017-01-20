@@ -37,9 +37,7 @@ pro.deleteCookieByKey = function (key) {
     var exp = new Date();
     exp.setTime(exp.getTime() + (-10 * 24 * 60 * 60 * 1000));
     var cval = this.readCookiesByName();
-    console.log(cval);
     if (cval != null) {
-        console.log(key + '=' + cval + ";expires=" + exp.toGMTString());
         document.cookie = key + '=' + cval + ";expires=" + exp.toGMTString();
     }
 };
