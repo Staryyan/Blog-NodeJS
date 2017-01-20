@@ -26,7 +26,7 @@
                     <a ng-click="logInOrLogOut()">{{ info }}</a>
                 </li>
                 <li>
-                    <a href="./writeArticle.html">Write Article</a>
+                    <a href="./writeArticle.html" ng-if="hasLogIn()">Write Article</a>
                 </li>
             </ul>
         </div>

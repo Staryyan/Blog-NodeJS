@@ -73,4 +73,10 @@ app.controller('widgetTemplateCtrl', function ($scope, $http) {
         });
     }
 
+    $scope.isAdmin = function() {
+        var cookie = new Cookies();
+        var user = cookie.readCookiesByName();
+        return user == 'Administration';
+    }
+
 });

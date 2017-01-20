@@ -92,5 +92,5 @@ function checkRepeatPassword() {
 }
 
 function cancel() {
-    window.location.href = './login.html';
+    window.location.href = './signIn.html';
 }

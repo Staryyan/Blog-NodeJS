@@ -7,12 +7,6 @@ var fs = require('fs');
 var Parser = require('../bin/Parser');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(request, response) {
-    console.log('test');
-    response.render('widgetTemplate')
-});
-
 router.post('/logIn', function (request, response) {
     console.log('login');
     User.logInValidate(request.body.username, request.body.password, function (data) {

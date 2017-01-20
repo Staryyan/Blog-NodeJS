@@ -20,4 +20,10 @@ app.controller('navigatorCtrl', function ($scope) {
         cookie.deleteCookieByKey('name');
         window.location.href = './signIn.html';
     };
+
+    $scope.hasLogIn = function () {
+        var cookie = new Cookies();
+        var user = cookie.readCookiesByName();
+        return user != null;
+    }
 });

@@ -15,6 +15,8 @@ app.controller('articleContentCtrl', function ($scope, $http, $location, $sce) {
 
     loadComments();
 
+    var nowUrl = $location.absUrl();
+
     function loadArticle() {
         $http({
             url: '../loadArticleDetail',
@@ -130,7 +132,7 @@ app.controller('articleContentCtrl', function ($scope, $http, $location, $sce) {
             data: { commentId: $scope.deleteCommentId },
             method: 'POST'
         }).success(function (data) {
-            window.location.href = './home.html'
+            window.location.href = nowUrl;
         })
     };
     
@@ -152,7 +154,7 @@ app.controller('articleContentCtrl', function ($scope, $http, $location, $sce) {
                     newMsg: $scope.message
                 }
             }).success(function (data) {
-                window.location.href = './home.html'
+                window.location.href = nowUrl;
             })
         }
     };
@@ -163,7 +165,7 @@ app.controller('articleContentCtrl', function ($scope, $http, $location, $sce) {
             method: 'POST',
             data: { commentId: id }
         }).success(function (data) {
-            window.location.href = './home.html'
+            window.location.href = nowUrl;
         })
     }
     
