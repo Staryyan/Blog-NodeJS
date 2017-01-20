@@ -11,32 +11,14 @@
 
     <title>Blog Home - Stary's blog.</title>
 
-    <!-- Angular -->
-    <script type="text/javascript" src="../javascripts/Angular.js"></script>
-
-    <!-- jQuery -->
-    <script src="../javascripts/jquery.js"></script>
-
-    <script src="../JqueryUI/jquery-ui.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../javascripts/bootstrap.min.js"></script>
-
+    <!-- CSS -->
     <!-- Bootstrap Core CSS -->
-    <link href="../stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Bootstrap/bootstrap.min.css">
 
-    <link href="../JqueryUI/jquery-ui.css" rel="stylesheet">
-
-    <!-- Custom Javascript -->
-
-    <script type="text/javascript" src="../javascripts/Cookies.js"></script>
-
-    <script type="text/javascript" src="../javascripts/home.js"></script>
-
-    <script type="text/javascript" src="../javascripts/navigator.js"></script>
+    <link rel="stylesheet" href="../JqueryUI/jquery-ui.css">
 
     <!-- Custom CSS -->
-    <link href="../stylesheets/blog-home.css" rel="stylesheet">
+    <link rel="stylesheet" href="../stylesheets/home.css">
 
 </head>
 
@@ -49,7 +31,6 @@
 
         <div class="row">
 
-            <!-- Blog Entries Column -->
             <div class="col-md-8" ng-controller="homeArticlesListCtrl">
 
                 <h1 class="page-header">
@@ -62,14 +43,20 @@
                         <a href="./article.html?id={{ article['id'] }}">{{ article['title'] }}</a>
                         <small>{{ article['catalog'] }}</small>
                     </h2>
+
                     <p class="lead">
                         by <a href="">{{ article['author'] }}</a>
                     </p>
+
                     <p><span class="glyphicon glyphicon-time"></span> {{ article['date'] }}</p>
+
                     <a class="btn btn-primary" href="./article.html?id={{ article['id'] }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
                     <a class="btn btn-danger" ng-click="deleteArticle(article['id'])" ng-if="canDeleteArticle(article['author'])">Delete <span class="glyphicon glyphicon-alert"></span></a>
+
                     <hr />
-                    <!-- Modal -->
+
+                    <!-- Delete Modal -->
                     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -87,6 +74,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <nav>
@@ -97,20 +85,36 @@
 
             </div>
 
-            <div ng-include="'./widgetTemplate.html'">
-                <script src="../javascripts/widgetTemplate.js"></script>
-            </div>
+            <div ng-include="'./widgetTemplate.html'"></div>
 
         </div>
-        <!-- /.row -->
 
         <hr>
 
         <div ng-include="'./footerTemplate.html'"></div>
 
     </div>
-    <!-- /.container -->
 
+    <!-- JS -->
+    <!-- Angular -->
+    <script type="text/javascript" src="../Angular/angular.js"></script>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="../javascripts/jquery.js"></script>
+
+    <script type="text/javascript" src="../JqueryUI/jquery-ui.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script type="text/javascript" src="../Bootstrap/bootstrap.min.js"></script>
+
+    <!-- Custom Javascript -->
+    <script type="text/javascript" src="../javascripts/cookies.js"></script>
+
+    <script type="text/javascript" src="../javascripts/home.js"></script>
+
+    <script type="text/javascript" src="../javascripts/navigator.js"></script>
+
+    <script src="../javascripts/widgetTemplate.js"></script>
 </body>
 
 </html>

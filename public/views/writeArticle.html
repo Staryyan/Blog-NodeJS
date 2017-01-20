@@ -11,55 +11,25 @@
 
     <title>Blog Article - Stary's blog.</title>
 
-    <!-- jQuery -->
-    <script src="../javascripts/jquery.js"></script>
+    <link rel="stylesheet" href="../JqueryUI/jquery-ui.css" >
 
-    <script type="text/javascript" src="../javascripts/bootstrap.min.js"></script>
-
-    <script type="text/javascript" src="../javascripts/Angular.js"></script>
-
-    <script type="text/javascript" src="../javascripts/Cookies.js"></script>
-
-    <script type="text/javascript" src="../javascripts/writeArticle.js"></script>
+    <!-- CSS -->
 
     <!-- Bootstrap Core CSS -->
-    <link href="../stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="../Bootstrap/bootstrap.min.css" rel="stylesheet">
 
-    <link href="../stylesheets/writeArticle.css" rel="stylesheet">
-
+    <!-- wysihtml5 CSS -->
     <link href="../bootstrap-wysihtml5/style-responsive.css" rel="stylesheet">
+
     <link href="../bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet">
+
+    <!-- Custom CSS-->
+    <link href="../stylesheets/writeArticle.css" rel="stylesheet">
 
 </head>
 <body ng-app="writeArticlesApp">
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="./home.html">Stary's Blog</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="./writeArticle.html">Write Article</a>
-                    </li>
-                    <li>
-                        <a href="./home.html">Log Out</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+
+    <div ng-include="'./navigatorTemplate.html'"></div>
 
     <div class="container">
         <form class="writeArticleForm jumbotron form-horizontal" ng-controller="writeArticleCtrl" ng-submit="submit()" ng-init="savedDraft = false; deletedDraft = false;">
@@ -118,7 +88,6 @@
 
         </form>
 
-
         <!-- Footer -->
         <footer>
             <hr />
@@ -133,11 +102,33 @@
 
     </div>
 
+    <!-- Js -->
+
+    <!-- Angular -->
+    <script type="text/javascript" src="../Angular/angular.js"></script>
+
+    <!-- jQuery -->
+    <script src="../javascripts/jquery.js"></script>
+
+    <script type="text/javascript" src="../JqueryUI/jquery-ui.js"></script>
+
+    <!-- Bootstrap Js-->
+    <script type="text/javascript" src="../Bootstrap/bootstrap.min.js"></script>
+
+    <!-- Custom Js-->
+    <script type="text/javascript" src="../javascripts/cookies.js"></script>
+
+    <script type="text/javascript" src="../javascripts/writeArticle.js"></script>
+
+    <script type="text/javascript" src="../javascripts/navigator.js"></script>
+
+    <!-- wysihtml5 Js -->
     <script src="../bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
 
     <script src="../bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
     <script>
         $('.wysihtml5').wysihtml5();
     </script>
+
 </body>
 </html>

@@ -1,8 +1,5 @@
-<!-- Blog Sidebar Widgets Column -->
 <div class="col-md-4" ng-controller="widgetTemplateCtrl">
 
-    <!-- Blog Search Well -->
-    <!-- Search Blog article. -->
     <div class="well">
         <h4>Blog Search</h4>
         <div class="input-group">
@@ -13,10 +10,8 @@
                 </button>
             </span>
         </div>
-        <!-- /.input-group -->
     </div>
 
-    <!-- Side Widget Well -->
     <div class="well">
         <h4>Latest Information</h4>
         <p ng-bind="publishMessage">Welcome to Stary's blog. </p>
@@ -24,7 +19,7 @@
             <span class="glyphicon glyphicon-adjust"></span> Edit</button>
     </div>
 
-    <!-- Modal -->
+    <!-- Edit Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -33,6 +28,7 @@
                         <span class="sr-only">Close</span></button>
                     <h4 class="modal-title">Publish latest infomation.</h4>
                 </div>
+
                 <div class="modal-body">
                     <form class="jumbotron">
                         <div class="input-group">
@@ -41,6 +37,7 @@
                         </div>
                     </form>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button class="btn btn-success" type="submit" ng-click="saveInformation()">Save</button>
@@ -48,5 +45,5 @@
             </div>
         </div>
     </div>
-    </div>
+
 </div>

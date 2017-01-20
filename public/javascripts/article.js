@@ -166,4 +166,3 @@ app.controller('articleContentCtrl', function ($scope, $http, $location, $sce) {
     };
     
 });
-

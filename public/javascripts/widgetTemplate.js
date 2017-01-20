@@ -2,7 +2,6 @@
  * Created by yanzexin on 25/12/2016.
  * All right reserved @Stary 25/12/2016
  */
-console.log(app);
 app.controller('widgetTemplateCtrl', function ($scope, $http) {
     loadInformation();
 

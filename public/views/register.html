@@ -1,96 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
 
-<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="description" content="article">
+        <meta name="author" content="Stary">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="description" content="article">
-    <meta name="author" content="Stary">
+        <title>Blog Article - Article</title>
 
-    <title>Blog Article - Article</title>
+        <!-- CSS -->
+        <link href="../JqueryUI/jquery-ui.css" rel="stylesheet">
 
+        <!-- Bootstrap Core CSS -->
+        <link href="../Bootstrap/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="../stylesheets/signIn.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <div ng-include="'./navigatorTemplate.html'"></div>
+
+        <div class="container">
+            <div class="row">
+                <div name="register" class="log-in-form jumbotron">
+                    <h1>Register</h1>
+                    <div id="signInWrong" class="alert alert-danger" role="alert">
+                        <strong>Warning</strong>
+                        <p id="wrongInfo"></p>
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input id="username" type="text" class="form-control" placeholder="Username" required title='Username should be made of 6 - 18 character, number or underline and starts with character.'>
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input id="password" name="password" type="password" class="form-control" placeholder="Password" required title="Password should be 6 - 12 number, character, hyphen or underline.">
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input id="repeatPassword" type="password" class="form-control" placeholder="repeat your password" required>
+                    </div>
+
+                    <button class="btn btn-group btn-success" id="submitRegisterBtn">Submit</button>
+
+                    <button class="btn btn-group btn-danger" id="cancelBtn">Cancel</button>
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+    <!-- JS -->
     <!-- jQuery -->
-    <script src="../javascripts/jquery.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery.js"></script>
 
-    <script src="../JqueryUI/jquery-ui.js"></script>
+    <script type="text/javascript" src="../JqueryUI/jquery-ui.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../Bootstrap/bootstrap.min.js"></script>
+
+    <!-- Custom Javascript -->
     <script src="../javascripts/md5.js"></script>
 
     <script src="../javascripts/register.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../javascripts/bootstrap.min.js"></script>
-
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../stylesheets/bootstrap.min.css" rel="stylesheet">
-
-    <link href="../JqueryUI/jquery-ui.css" rel="stylesheet">
-
-    <link href="../stylesheets/logIn.css" rel="stylesheet">
-
-</head>
-<body>
-<!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="./home.html">Stary's Blog</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="home.html">Home</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-
-<div class="container">
-    <div class="row">
-        <div name="register" class="log-in-form jumbotron">
-            <h1>Register</h1>
-            <div id="signInWrong" class="alert alert-danger" role="alert">
-                <strong>Warning</strong>
-                <p id="wrongInfo"></p>
-            </div>
-
-            <div class="input-group">
-                <span class="input-group-addon">@</span>
-                <input id="username" type="text" class="form-control" placeholder="Username" required title='Username should be made of 6 - 18 character, number or underline and starts with character.'>
-            </div>
-
-            <div class="input-group">
-                <span class="input-group-addon">@</span>
-                <input id="password" name="password" type="password" class="form-control" placeholder="Password" required title="Password should be 6 - 12 number, character, hyphen or underline.">
-            </div>
-
-            <div class="input-group">
-                <span class="input-group-addon">@</span>
-                <input id="repeatPassword" type="password" class="form-control" placeholder="repeat your password" required>
-            </div>
-
-            <button class="btn btn-group btn-success" id="submitRegisterBtn">Submit</button>
-
-            <button class="btn btn-group btn-danger" id="cancelBtn">Cancel</button>
-
-        </div>
-    </div>
-</div>
-
-</body>
 </html>

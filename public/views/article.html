@@ -12,23 +12,16 @@
 
     <title>Blog Article - Article</title>
 
-    <script type="text/javascript" src="../javascripts/Angular.js"></script>
-    <script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular-sanitize.min.js"></script>
+    <link rel="stylesheet" href="../JqueryUI/jquery-ui.css" >
 
-    <script type="text/javascript" src="../javascripts/Cookies.js"></script>
-
-    <script type="text/javascript" src="../javascripts/article.js"></script>
-
-    <script type="text/javascript" src="../javascripts/navigator.js"></script>
-
+    <!-- CSS -->
     <!-- Bootstrap Core CSS -->
-    <link href="../stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="../Bootstrap/bootstrap.min.css" rel="stylesheet">
 
     <link href="../JqueryUI/jquery-ui.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../stylesheets/blog-post.css" rel="stylesheet">
-
+    <link href="../stylesheets/post.css" rel="stylesheet">
 
 </head>
 
@@ -41,35 +34,23 @@
         <a class="btn btn-info" href="./home.html"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
         <div class="row">
 
-            <!-- Blog Post Content Column -->
             <div class="col-lg-8">
-
-                <!-- Blog Post -->
-
-                <!-- Title -->
                 <h1>{{ title }}</h1>
 
-                <!-- Author -->
                 <p class="lead">
                     by <a href="#">{{ author }}</a>
                 </p>
 
                 <hr>
 
-                <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{ date }}</p>
 
                 <hr>
 
-                <!-- Post Content -->
                 <div ng-bind-html="trustHtml"></div>
 
                 <hr>
 
-                <!-- Blog Comments -->
-
-                <!-- Comments Form -->
-                <!-- Posted Comments -->
                 <div class="well">
                     <h4>Leave a Comment:</h4>
                     <form role="form">
@@ -83,7 +64,6 @@
 
                 <hr>
 
-                <!-- Comment -->
                 <div ng-repeat="comment in commentsList">
                     <div class="media">
                         <a class="pull-left" href="#">
@@ -104,7 +84,9 @@
                             </h4>
                         </div>
                     </div>
+
                     <hr />
+
                 </div>
 
                 <!-- Modal -->
@@ -153,26 +135,37 @@
 
             </div>
 
-            <div ng-include="'./widgetTemplate.html'">
-                <script src="../javascripts/widgetTemplate.js"></script>
-            </div>
+            <div ng-include="'./widgetTemplate.html'"></div>
         </div>
-        <!-- /.row -->
 
         <hr>
 
         <div ng-include="'./footerTemplate.html'"></div>
 
     </div>
-    <!-- /.container -->
+
+    <!-- JS -->
+    <!-- Angular -->
+    <script type="text/javascript" src="../Angular/angular.js"></script>
+
+    <script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular-sanitize.min.js"></script>
 
     <!-- jQuery -->
     <script src="../javascripts/jquery.js"></script>
 
     <script src="../JqueryUI/jquery-ui.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../javascripts/bootstrap.min.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../Bootstrap/bootstrap.min.js"></script>
+
+    <!-- Custom Js -->
+    <script type="text/javascript" src="../javascripts/cookies.js"></script>
+
+    <script type="text/javascript" src="../javascripts/article.js"></script>
+
+    <script type="text/javascript" src="../javascripts/navigator.js"></script>
+
+    <script type="text/javascript" src="../javascripts/widgetTemplate.js"></script>
 </body>
 
 </html>
