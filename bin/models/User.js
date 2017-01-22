@@ -44,7 +44,6 @@ UserSchema.statics.register = function (username, password, callback) {
                 password: parser.parsePassword(password)
             });
             savedUser.save().then(function () {
-                console.log('tset');
                 callbackJson['succeed'] = true;
                 callback(callbackJson);
             }).catch(function (error) {

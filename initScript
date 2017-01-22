@@ -1,0 +1,13 @@
+cd bin
+# install node module
+printf 'Install node module...\n'
+npm install
+printf 'Install finished.\n'
+# init DB
+printf 'Init Database\n'
+node initDB
+printf 'finished.\n'
+# run project
+printf "Run stary's blog.\nPress Ctrl + C to end...\n"
+printf 'run project\n'
+node www

@@ -5,8 +5,7 @@
 ## 使用说明
 
 ```
-npm install
-node bin/www
+./initScript
 ```
 
 然后访问 [Stary's blog](http://localhost:3000/views/home.html)
@@ -20,6 +19,8 @@ node bin/www
 
 ### 3、Administration模式
 管理员拥有最高权限，可以删除所有人的博客，删除或隐藏用户评论，可以发布公告。
+账号为: Administration
+密码为: 123456
 
 ## 特色介绍
 ### 1、博客部分

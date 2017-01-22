@@ -1,1 +1,1 @@
-{"message":"已成功搭建。"}
+{"message":"欢迎来到Stary's Blog."}
